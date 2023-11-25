@@ -2,7 +2,6 @@ module Display
 
 include("common.jl")
 
-export RENDERER
 export SCREEN_CENTER_X
 export SCREEN_CENTER_Y
 export Window
@@ -23,30 +22,30 @@ struct Window
     sdl_window::Ptr{SDL_Window}
     renderer::Ptr{SDL_Renderer}
     title::String
-    x::Int
-    y::Int
     w::Int
     h::Int
+    x::Int
+    y::Int
     flags::Dict{Any, Any}
 end
 
-function create_window(title::String, x::Int, y::Int, w::Int, h::Int; flags...)::Window
+function create_window(title::String, w::Int, h::Int, x::Int=SCREEN_CENTER_X, y::Int=SCREEN_CENTER_Y; flags...)::Window
     window = SDL_CreateWindow(title, x, y, w, h, SDL_WINDOW_SHOWN)
     SDL_SetWindowResizable(window, SDL_TRUE)
-    global RENDERER = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)
-    return Window(window, RENDERER, title, x, y, w, h, flags)
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)
+    return Window(window, renderer, title, w, h, x, y, flags)
 end
 
 function quit(window::Window)
-    SDL_DestroyRenderer(RENDERER)
+    SDL_DestroyRenderer(window.renderer)
     SDL_DestroyWindow(window.sdl_window)
     SDL_Quit()
     exit()
 end
 
-function splash(r::Int, g::Int, b::Int, a::Int=255)
-    SDL_SetRenderDrawColor(RENDERER, r, g, b, a);
-    SDL_RenderClear(RENDERER);
+function splash(window::Window, r::Int, g::Int, b::Int, a::Int=255)
+    SDL_SetRenderDrawColor(window.renderer, r, g, b, a);
+    SDL_RenderClear(window.renderer);
 end
 
 function update_display(window::Window)

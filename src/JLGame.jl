@@ -10,7 +10,6 @@ include("colour.jl")
 
 export SCREEN_CENTER_X
 export SCREEN_CENTER_Y
-export RENDERER
 export create_window
 export quit
 export splash
@@ -34,45 +33,37 @@ using .Draw
 using .Time
 using .Events
 
-export SDL_Event
-export SDL_PollEvent
-export SDL_QUIT
-export SDL_SetRenderDrawColor
-export SDL_RenderClear
-export SDL_RenderPresent
-export SDL_Delay
-
 end
 
-using .JLGame
+# using .JLGame
 
-window = create_window("JLGame", SCREEN_CENTER_X, SCREEN_CENTER_Y, 1000, 800)
+# window = create_window("JLGame", SCREEN_CENTER_X, SCREEN_CENTER_Y, 1000, 800)
 
-function main()
-    clock = Clock(60)
-    RUNNING = true
-    while RUNNING
-        while events_exist()
-            event = pop_event()
-            if event.type == QUIT
-                RUNNING = false
-                break
-            end
-        end
+# function main()
+#     clock = Clock(60)
+#     RUNNING = true
+#     while RUNNING
+#         while events_exist()
+#             event = pop_event()
+#             if event.type == QUIT
+#                 RUNNING = false
+#                 break
+#             end
+#         end
 
-        splash(96, 128, 255)
+#         splash(window, 96, 128, 255)
         
-        draw_filled_circle(window, 300, 300, 50, ColourRGBA(255, 0, 0))
-        draw_filled_circle(window, 420, 300, 50, ColourRGBA(255, 0, 0, 100))
-        draw_filled_circle(window, 540, 300, 50, (0, 255, 0))
-        draw_filled_circle(window, 660, 300, 50, (0, 255, 0, 100))
+#         draw_filled_circle(window, 300, 300, 50, ColourRGBA(255, 0, 0))
+#         draw_filled_circle(window, 420, 300, 50, ColourRGBA(255, 0, 0, 100))
+#         draw_filled_circle(window, 540, 300, 50, (0, 255, 0))
+#         draw_filled_circle(window, 660, 300, 50, (0, 255, 0, 100))
 
-        update_display(window)
+#         update_display(window)
 
-        tick(clock)
-    end
+#         tick(clock)
+#     end
 
-    quit(window)
-end
+#     quit(window)
+# end
 
-main()
+# main()

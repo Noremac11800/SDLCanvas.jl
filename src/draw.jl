@@ -1,9 +1,9 @@
 module Draw
 
 include("common.jl")
-include("colour.jl")
-include("display.jl")
 
+# Colour and Display modules are already brought into scope in JLGame.jl.
+# Re-including them with include() is unnecessary. Just use the .. using syntax.
 using ..Colour
 using ..Display
 

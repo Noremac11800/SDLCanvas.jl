@@ -2,5 +2,5 @@ using JLGame
 using Test
 
 @testset "JLGame.jl" begin
-    # Write your tests here.
+    @assert 1 < 2
 end
