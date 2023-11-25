@@ -1,33 +1,6 @@
-module JLGame
 
-using SimpleDirectMediaLayer
-using SimpleDirectMediaLayer.LibSDL2
-
-export SCREEN_CENTER_X
-export SCREEN_CENTER_Y
-export RENDERER
-export create_window
-export quit
-
-include("display.jl")
-
-export draw_filled_circle
-include("draw.jl")
-
-using .Display
-using .Draw
-
-export SDL_Event
-export SDL_PollEvent
-export SDL_QUIT
-export SDL_SetRenderDrawColor
-export SDL_RenderClear
-export SDL_RenderPresent
-export SDL_Delay
-
-end
-
-using .JLGame
+# include("init.jl")
+using JLGame
 
 window = create_window("JLGame", SCREEN_CENTER_X, SCREEN_CENTER_Y, 1000, 800)
 
