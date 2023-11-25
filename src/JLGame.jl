@@ -1,21 +1,38 @@
 module JLGame
 
-using SimpleDirectMediaLayer
-using SimpleDirectMediaLayer.LibSDL2
+include("common.jl")
+
+export QUIT
+const QUIT = SDL_QUIT
+
+export ColourRGBA
+include("colour.jl")
 
 export SCREEN_CENTER_X
 export SCREEN_CENTER_Y
 export RENDERER
 export create_window
 export quit
-
+export splash
+export update_display
 include("display.jl")
 
 export draw_filled_circle
 include("draw.jl")
 
+export Clock
+export tick
+include("clock.jl")
+
+export events_exist
+export pop_event
+include("events.jl")
+
+using .Colour
 using .Display
 using .Draw
+using .Time
+using .Events
 
 export SDL_Event
 export SDL_PollEvent
@@ -32,27 +49,27 @@ using .JLGame
 window = create_window("JLGame", SCREEN_CENTER_X, SCREEN_CENTER_Y, 1000, 800)
 
 function main()
-    close = false
-    while !close
-        event_ref = Ref{SDL_Event}()
-        while Bool(SDL_PollEvent(event_ref))
-            evt = event_ref[]
-            evt_ty = evt.type
-            if evt_ty == SDL_QUIT
-                close = true
+    clock = Clock(60)
+    RUNNING = true
+    while RUNNING
+        while events_exist()
+            event = pop_event()
+            if event.type == QUIT
+                RUNNING = false
                 break
             end
         end
 
-        SDL_SetRenderDrawColor(RENDERER, 96, 128, 255, 255);
-        SDL_RenderClear(RENDERER);
+        splash(96, 128, 255)
+        
+        draw_filled_circle(window, 300, 300, 50, ColourRGBA(255, 0, 0))
+        draw_filled_circle(window, 420, 300, 50, ColourRGBA(255, 0, 0, 100))
+        draw_filled_circle(window, 540, 300, 50, (0, 255, 0))
+        draw_filled_circle(window, 660, 300, 50, (0, 255, 0, 100))
 
-        SDL_SetRenderDrawColor(RENDERER, 255, 0, 0, 255);
-        draw_filled_circle(RENDERER, 300, 300, 50)
+        update_display(window)
 
-        SDL_RenderPresent(RENDERER)
-
-        SDL_Delay(1000 ÷ 60)
+        tick(clock)
     end
 
     quit(window)
