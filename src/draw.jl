@@ -9,8 +9,6 @@ using ..Display
 
 export draw_filled_circle
 
-println(typeof(ColourRGBA(255, 0, 0)))
-
 function draw_filled_circle(window::Window, x::Int, y::Int, r::Int, colour::Tuple{Int, Int, Int, Int})
     SDL_SetRenderDrawColor(window.renderer, colour...);
     SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND)

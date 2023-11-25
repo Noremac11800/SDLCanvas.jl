@@ -2,6 +2,8 @@ module Display
 
 include("common.jl")
 
+using ..Colour
+
 export SCREEN_CENTER_X
 export SCREEN_CENTER_Y
 export Window
@@ -15,8 +17,8 @@ SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16)
 
 @assert SDL_Init(SDL_INIT_EVERYTHING) == 0 "error initializing SDL: $(unsafe_string(SDL_GetError()))"
 
-SCREEN_CENTER_X = SDL_WINDOWPOS_CENTERED
-SCREEN_CENTER_Y = SDL_WINDOWPOS_CENTERED
+const SCREEN_CENTER_X = SDL_WINDOWPOS_CENTERED
+const SCREEN_CENTER_Y = SDL_WINDOWPOS_CENTERED
 
 struct Window
     sdl_window::Ptr{SDL_Window}
@@ -46,6 +48,10 @@ end
 function splash(window::Window, r::Int, g::Int, b::Int, a::Int=255)
     SDL_SetRenderDrawColor(window.renderer, r, g, b, a);
     SDL_RenderClear(window.renderer);
+end
+
+function splash(window::Window, colour::ColourRGBA)
+    splash(window, colour.r, colour.g, colour.b, colour.a)
 end
 
 function update_display(window::Window)

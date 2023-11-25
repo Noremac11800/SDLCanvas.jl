@@ -8,6 +8,13 @@ const QUIT = SDL_QUIT
 export ColourRGBA
 include("colour.jl")
 
+export BLACK
+export WHITE
+export RED
+export GREEN
+export BLUE
+include("colours.jl")
+
 export SCREEN_CENTER_X
 export SCREEN_CENTER_Y
 export create_window
@@ -28,6 +35,7 @@ export pop_event
 include("events.jl")
 
 using .Colour
+using .Colours
 using .Display
 using .Draw
 using .Time
@@ -37,7 +45,7 @@ end
 
 # using .JLGame
 
-# window = create_window("JLGame", SCREEN_CENTER_X, SCREEN_CENTER_Y, 1000, 800)
+# window = create_window("JLGame", 1000, 800)
 
 # function main()
 #     clock = Clock(60)
@@ -51,7 +59,7 @@ end
 #             end
 #         end
 
-#         splash(window, 96, 128, 255)
+#         splash(window, BLACK)
         
 #         draw_filled_circle(window, 300, 300, 50, ColourRGBA(255, 0, 0))
 #         draw_filled_circle(window, 420, 300, 50, ColourRGBA(255, 0, 0, 100))

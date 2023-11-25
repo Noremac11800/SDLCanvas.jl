@@ -1,7 +1,7 @@
-
+using Pkg; Pkg.activate(".")
 using JLGame
 
-window = create_window("JLGame", SCREEN_CENTER_X, SCREEN_CENTER_Y, 1000, 800)
+window = create_window("JLGame", 800, 600)
 
 function main()
     clock = Clock(60)
@@ -15,12 +15,7 @@ function main()
             end
         end
 
-        splash(window, 96, 128, 255)
-        
-        draw_filled_circle(window, 300, 300, 50, ColourRGBA(255, 0, 0))
-        draw_filled_circle(window, 420, 300, 50, ColourRGBA(255, 0, 0, 100))
-        draw_filled_circle(window, 540, 300, 50, (0, 255, 0))
-        draw_filled_circle(window, 660, 300, 50, (0, 255, 0, 100))
+        splash(window, BLACK)
 
         update_display(window)
 
