@@ -18,7 +18,8 @@ function draw_starfield()
         end
         new_x = x + speed > 800 ? 0 : x + speed
         STARS[i] = (new_x, y)
-        draw_filled_circle(window, new_x, y, 1, WHITE)
+#        draw_filled_circle(window, new_x, y, 0, WHITE)
+        draw_pixel(window,new_x,y,WHITE) #Use pixels instead of circles
     end
 end
 

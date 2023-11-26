@@ -27,6 +27,7 @@ export splash
 export update_display
 include("display.jl")
 
+export draw_pixel
 export draw_line
 export draw_filled_circle
 include("draw.jl")

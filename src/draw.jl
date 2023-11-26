@@ -7,6 +7,7 @@ include("common.jl")
 using ..Colour
 using ..Display
 
+export draw_pixel
 export draw_line
 export draw_filled_circle
 
@@ -46,6 +47,19 @@ end
 
 function draw_filled_circle(window::Window, x::Int, y::Int, r::Int, colour::ColourRGBA)
     draw_filled_circle(window, x, y, r, (colour.r, colour.g, colour.b, colour.a))
+end
+
+function draw_pixel(window::Window, x::Int, y::Int, colour::Tuple{Int,Int,Int,Int})
+    SDL_SetRenderDrawColor(window.renderer, colour...)
+    SDL_RenderDrawPoint(window.renderer, x, y)
+end
+
+function draw_pixel(window::Window, x::Int, y::Int, colour::Tuple{Int,Int,Int})
+    draw_pixel(window, x, y, (colour..., 255))
+end
+
+function draw_pixel(window::Window, x::Int, y::Int, colour::ColourRGBA)
+    draw_pixel(window, x, y, (colour.r, colour.g, colour.b, colour.a))
 end
 
 end

@@ -17,7 +17,7 @@ function main()
 
         splash(window, BLACK)
 
-        draw_line(window, 20, 20, 400, 350, GREEN)
+        draw_pixel(window, 200, 200, (255,255,255,255))
 
         update_display(window)
 
