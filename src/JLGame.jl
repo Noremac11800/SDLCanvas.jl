@@ -8,15 +8,19 @@ const QUIT = SDL_QUIT
 export ColourRGBA
 include("colour.jl")
 
+export NAMED_COLOURS
 export BLACK
 export WHITE
 export RED
 export GREEN
 export BLUE
+export random_colour
+export random_named_colour
 include("colours.jl")
 
 export SCREEN_CENTER_X
 export SCREEN_CENTER_Y
+export Window
 export create_window
 export quit
 export splash

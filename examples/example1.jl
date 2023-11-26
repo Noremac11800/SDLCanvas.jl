@@ -1,9 +1,24 @@
-
+using Pkg; Pkg.activate(".")
 using JLGame
 
-window = create_window("JLGame", SCREEN_CENTER_X, SCREEN_CENTER_Y, 1000, 800)
+function draw_ring(window::Window; n_circles=100, ring_radius = 200, circle_radius=10)
+    cx = window.w / 2
+    cy = window.h / 2
+    for n in 1:n_circles
+        theta = n/n_circles*2pi
+        x, y = round(Int, ring_radius*cos(theta) + cx), round(Int, ring_radius*sin(theta) + cy)
+        colour = random_colour(150)
+        draw_filled_circle(window, x, y, circle_radius, colour)
+    end
+end
+
+window = create_window("JLGame", 800, 600)
 
 function main()
+    r = 200
+    speed = 3
+    direction = -1
+
     clock = Clock(60)
     RUNNING = true
     while RUNNING
@@ -15,12 +30,11 @@ function main()
             end
         end
 
-        splash(window, 96, 128, 255)
-        
-        draw_filled_circle(window, 300, 300, 50, ColourRGBA(255, 0, 0))
-        draw_filled_circle(window, 420, 300, 50, ColourRGBA(255, 0, 0, 100))
-        draw_filled_circle(window, 540, 300, 50, (0, 255, 0))
-        draw_filled_circle(window, 660, 300, 50, (0, 255, 0, 100))
+        direction = r < 50 || r > 200 ? -direction : direction
+        r += direction * speed
+
+        splash(window, WHITE)
+        draw_ring(window, ring_radius=r)
 
         update_display(window)
 
