@@ -2,9 +2,6 @@ module JLGame
 
 include("common.jl")
 
-export QUIT
-const QUIT = SDL_QUIT
-
 export ColourRGBA
 include("colour.jl")
 
@@ -49,6 +46,37 @@ include("clock.jl")
 
 export events_exist
 export pop_event
+export is_key_pressed
+export QUIT
+export K_ESCAPE
+export K_SPACE
+export K_ENTER
+export K_RETURN
+export K_A
+export K_B
+export K_C
+export K_D
+export K_E
+export K_F
+export K_G
+export K_H
+export K_I
+export K_J
+export K_K
+export K_L 
+export K_N
+export K_O
+export K_P
+export K_Q
+export K_R
+export K_S
+export K_T
+export K_U
+export K_V
+export K_W
+export K_X
+export K_Y
+export K_Z
 include("events.jl")
 
 using .Colour
