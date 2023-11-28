@@ -49,7 +49,7 @@ function draw_line(window::Window, x1::Int, y1::Int, x2::Int, y2::Int, colour::C
     draw_line(window, x1, y1, x2, y2, (colour.r, colour.g, colour.b, colour.a); kwargs...)
 end
 
-function draw_arc(window::Window, x::Int, y::Int, r::Int, start_angle, end_angle, colour::Tuple{Int, Int, Int, Int})
+function draw_arc(window::Window, x::Int, y::Int, r::Int, start_angle::Real, end_angle::Real, colour::Tuple{Int, Int, Int, Int})
     SDL_SetRenderDrawColor(window.renderer, colour...)
     SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND)
     for theta in start_angle:0.01:end_angle
@@ -58,11 +58,11 @@ function draw_arc(window::Window, x::Int, y::Int, r::Int, start_angle, end_angle
     end
 end
 
-function draw_arc(window::Window, x::Int, y::Int, r::Int, start_angle, end_angle, colour::Tuple{Int, Int, Int})
+function draw_arc(window::Window, x::Int, y::Int, r::Int, start_angle::Real, end_angle::Real, colour::Tuple{Int, Int, Int})
     draw_arc(window, x, y, r, start_angle, end_angle, (colour..., 255))
 end
 
-function draw_arc(window::Window, x::Int, y::Int, r::Int, start_angle, end_angle, colour::ColourRGBA)
+function draw_arc(window::Window, x::Int, y::Int, r::Int, start_angle::Real, end_angle::Real, colour::ColourRGBA)
     draw_arc(window, x, y, r, start_angle, end_angle, (colour.r, colour.g, colour.b, colour.a))
 end
 
