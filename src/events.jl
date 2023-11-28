@@ -5,6 +5,7 @@ include("common.jl")
 export events_exist
 export pop_event
 export is_key_pressed
+export is_key_held
 export QUIT
 export K_ESCAPE
 export K_SPACE
@@ -77,6 +78,11 @@ function is_key_pressed(event::SDL_Event, key::SDL_Scancode)::Bool
         return event.key.keysym.scancode == key
     end
     return false
+end
+
+function is_key_held(key::SDL_Scancode)::Bool
+    keystate = SDL_GetKeyboardState(C_NULL)
+    return unsafe_load(keystate, Int(key)+1)
 end
 
 function update_key_states()

@@ -47,6 +47,7 @@ include("clock.jl")
 export events_exist
 export pop_event
 export is_key_pressed
+export is_key_held
 export QUIT
 export K_ESCAPE
 export K_SPACE

@@ -1,7 +1,25 @@
 using Pkg; Pkg.activate(".")
 using JLGame
+using SimpleDirectMediaLayer
+using SimpleDirectMediaLayer.LibSDL2
 
 window = create_window("JLGame", 800, 600)
+
+function handle_events(x, y, speed)
+    if is_key_held(K_W)
+        y -= speed
+    end
+    if is_key_held(K_A)
+        x -= speed
+    end
+    if is_key_held(K_S)
+        y += speed
+    end
+    if is_key_held(K_D)
+        x += speed
+    end
+    return x, y
+end
 
 function main()
     x, y = 400, 300
@@ -16,19 +34,21 @@ function main()
                 break
             end
 
-            if is_key_pressed(event, K_W)
-                y -= speed
-            end
-            if is_key_pressed(event, K_A)
-                x -= speed
-            end
-            if is_key_pressed(event, K_S)
-                y += speed
-            end
-            if is_key_pressed(event, K_D)
-                x += speed
-            end
+            # if is_key_pressed(event, K_W)
+            #     y -= speed
+            # end
+            # if is_key_pressed(event, K_A)
+            #     x -= speed
+            # end
+            # if is_key_pressed(event, K_S)
+            #     y += speed
+            # end
+            # if is_key_pressed(event, K_D)
+            #     x += speed
+            # end
         end
+
+        x, y = handle_events(x, y, speed)
 
         splash(window, BLACK)
 
