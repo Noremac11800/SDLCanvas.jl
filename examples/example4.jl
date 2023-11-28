@@ -33,19 +33,6 @@ function main()
                 RUNNING = false
                 break
             end
-
-            # if is_key_pressed(event, K_W)
-            #     y -= speed
-            # end
-            # if is_key_pressed(event, K_A)
-            #     x -= speed
-            # end
-            # if is_key_pressed(event, K_S)
-            #     y += speed
-            # end
-            # if is_key_pressed(event, K_D)
-            #     x += speed
-            # end
         end
 
         x, y = handle_events(x, y, speed)
