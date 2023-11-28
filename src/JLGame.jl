@@ -14,8 +14,14 @@ export WHITE
 export RED
 export GREEN
 export BLUE
+export GREY
+export LIGHTGREY
+export DARKGREY
+export YELLOW
 export random_colour
 export random_named_colour
+export lighter
+export darker
 include("colours.jl")
 
 export SCREEN_CENTER_X
@@ -29,7 +35,12 @@ include("display.jl")
 
 export draw_pixel
 export draw_line
+export draw_arc
+export draw_filled_arc
+export draw_circle
 export draw_filled_circle
+export draw_rect
+export draw_filled_rect
 include("draw.jl")
 
 export Clock
