@@ -4,9 +4,14 @@ include("common.jl")
 
 export events_exist
 export pop_event
+export get_mouse_pos
+export mouse_clicked
+export is_mouse_held
 export is_key_pressed
 export is_key_held
 export QUIT
+export MOUSE_LEFT
+export MOUSE_RIGHT
 export K_ESCAPE
 export K_SPACE
 export K_ENTER
@@ -41,6 +46,9 @@ const QUIT = SDL_QUIT
 
 EVENTS_REF = Ref{SDL_Event}()
 
+MOUSE_LEFT = SDL_BUTTON_LEFT
+MOUSE_RIGHT = SDL_BUTTON_RIGHT
+
 K_SPACE = SDL_SCANCODE_SPACE
 K_ENTER = SDL_SCANCODE_RETURN
 K_RETURN = SDL_SCANCODE_RETURN
@@ -72,6 +80,24 @@ K_W = SDL_SCANCODE_W
 K_X = SDL_SCANCODE_X
 K_Y = SDL_SCANCODE_Y
 K_Z = SDL_SCANCODE_Z
+
+function get_mouse_pos()::Tuple{Int, Int}
+    x, y = Ref{Int32}(), Ref{Int32}()
+    SDL_GetMouseState(x, y)
+    return Int(x[]), Int(y[])
+end
+
+function mouse_clicked(event::SDL_Event, mouse_button::Int=MOUSE_LEFT)::Bool
+    if event.type == SDL_MOUSEBUTTONDOWN
+        return event.button.button == mouse_button
+    end
+    return false
+end
+
+function is_mouse_held(mouse_button::Int=MOUSE_LEFT)::Bool
+    mouse_button_states = SDL_GetMouseState(C_NULL, C_NULL) & SDL_BUTTON(mouse_button)
+    return Bool(parse(Int, reverse(bitstring(mouse_button_states))[mouse_button]))
+end
 
 function is_key_pressed(event::SDL_Event, key::SDL_Scancode)::Bool
     if event.type == SDL_KEYDOWN

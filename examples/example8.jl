@@ -3,10 +3,10 @@ using JLGame
 
 window = create_window("JLGame", 800, 600)
 
-function main()
-    font = Font("/Users/cam/Documents/GitBucket/JLGame/assets/sunnyspells.ttf", 20)
-    surface = render_font(font, "This is some text", BLACK)
+circles1 = []
+circles2 = []
 
+function main()
     clock = Clock(60)
     RUNNING = true
     while RUNNING
@@ -16,12 +16,22 @@ function main()
                 RUNNING = false
                 break
             end
+            if mouse_clicked(event)
+                push!(circles1, get_mouse_pos())
+            end
+            if is_mouse_held(MOUSE_RIGHT)
+                push!(circles2, get_mouse_pos())
+            end
         end
 
         splash(window, WHITE)
         
-        draw_circle(window, 400, 300, 100, BLACK)
-        blit(window, surface, 400, 300)
+        for (x, y) in circles1
+            draw_filled_circle(window, x, y, 20, RED)
+        end
+        for (x, y) in circles2
+            draw_filled_circle(window, x, y, 20, GREEN)
+        end
 
         update_display(window)
 

@@ -4,8 +4,7 @@ using JLGame
 window = create_window("JLGame", 800, 600)
 
 function main()
-    font = Font("/Users/cam/Documents/GitBucket/JLGame/assets/sunnyspells.ttf", 20)
-    surface = render_font(font, "This is some text", BLACK)
+    image = load_image("/Users/cam/Documents/GitBucket/JLGame/assets/ship.png")
 
     clock = Clock(60)
     RUNNING = true
@@ -20,8 +19,7 @@ function main()
 
         splash(window, WHITE)
         
-        draw_circle(window, 400, 300, 100, BLACK)
-        blit(window, surface, 400, 300)
+        blit(window, image, 400, 300)
 
         update_display(window)
 

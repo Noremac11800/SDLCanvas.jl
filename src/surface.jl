@@ -26,7 +26,7 @@ function get_center(window::Window, surface::Surface)
     return w ÷ 2, h ÷ 2
 end
 
-function blit(window::Window, surface::Surface, x::Int, y::Int; centered=true)
+function blit(window::Window, surface::Surface, x::Int, y::Int; centered=false)
     texture = SDL_CreateTextureFromSurface(window.renderer, surface.surface)
     w, h = Ref{Int32}(), Ref{Int32}()
     SDL_QueryTexture(texture, C_NULL, C_NULL, w, h)

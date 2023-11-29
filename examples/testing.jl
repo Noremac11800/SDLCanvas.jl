@@ -2,10 +2,25 @@ using Pkg; Pkg.activate(".")
 using JLGame
 
 window = create_window("JLGame", 800, 600)
+bg_colour = WHITE
+
+function change_bg_colour(button::Button)
+    global bg_colour
+    if bg_colour == button.hover_colour
+        bg_colour = WHITE
+    else
+        bg_colour = button.hover_colour
+    end
+end
 
 function main()
-    # image = load_image("/Users/cam/Documents/GitBucket/JLGame/assets/ship.png")
-    image = Image("/Users/cam/Documents/GitBucket/JLGame/assets/ship.png")
+    gui_manager = GUI_Manager(window)
+    red_button = Button("Press Me", 100, 200; on_clicked = change_bg_colour, colour=ColourRGBA(255, 0, 0, 100))
+    green_button = Button("No Press Me!", 300, 200; on_clicked = change_bg_colour, colour=ColourRGBA(0, 255, 0, 100))
+    blue_button = Button("I Want To Be Pressed!", 500, 200; on_clicked = change_bg_colour, colour=ColourRGBA(0, 0, 255, 100))
+    add_element(gui_manager, red_button)
+    add_element(gui_manager, green_button)
+    add_element(gui_manager, blue_button)
 
     clock = Clock(60)
     RUNNING = true
@@ -16,12 +31,13 @@ function main()
                 RUNNING = false
                 break
             end
+            process_events(gui_manager, event)
         end
 
-        splash(window, WHITE)
-        
-        blit(window, image, 400, 300)
+        splash(window, bg_colour)
 
+        draw(gui_manager)
+        
         update_display(window)
 
         tick(clock)
