@@ -9,8 +9,11 @@ export NAMED_COLOURS
 export BLACK
 export WHITE
 export RED
+export LIGHTRED
 export GREEN
+export LIGHTGREEN
 export BLUE
+export LIGHTBLUE
 export GREY
 export LIGHTGREY
 export DARKGREY

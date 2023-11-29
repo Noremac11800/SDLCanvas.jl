@@ -15,9 +15,9 @@ end
 
 function main()
     gui_manager = GUI_Manager(window)
-    red_button = Button("Press Me", 100, 200; on_clicked = change_bg_colour, colour=ColourRGBA(255, 0, 0, 100))
-    green_button = Button("No Press Me!", 300, 200; on_clicked = change_bg_colour, colour=ColourRGBA(0, 255, 0, 100))
-    blue_button = Button("I Want To Be Pressed!", 500, 200; on_clicked = change_bg_colour, colour=ColourRGBA(0, 0, 255, 100))
+    red_button = Button("Press Me", 100, 200; on_clicked = change_bg_colour, colour=LIGHTRED)
+    green_button = Button("No Press Me!", 300, 200; on_clicked = change_bg_colour, colour=LIGHTGREEN)
+    blue_button = Button("I Want To Be Pressed!", 500, 200; on_clicked = change_bg_colour, colour=LIGHTBLUE)
     add_element(gui_manager, red_button)
     add_element(gui_manager, green_button)
     add_element(gui_manager, blue_button)

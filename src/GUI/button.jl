@@ -83,7 +83,7 @@ function Button(label::String, x::Int, y::Int;
                 pressed::Bool=false,
                 hovered::Bool=false)
 
-    return Button(label, x, y, w, h, on_clicked, colour, lighter(colour, 50), darker(colour, 50), border, border_colour, visible, active, font_size, font, padding, pressed, hovered, signals, draw)
+    return Button(label, x, y, w, h, on_clicked, colour, lighter(colour, 30), darker(colour, 30), border, border_colour, visible, active, font_size, font, padding, pressed, hovered, signals, draw)
 end
 
 function draw(window::Window, button::Button)
