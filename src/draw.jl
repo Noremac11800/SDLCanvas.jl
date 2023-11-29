@@ -92,10 +92,6 @@ function draw_filled_arc(window::Window, x::Int, y::Int, r::Int, start_angle::Re
     draw_filled_arc(window, x, y, r, start_angle, end_angle, (colour.r, colour.g, colour.b, colour.a))
 end
 
-# function draw_eliptic_arc(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::ColourRGBA)
-#     for theta in 0:0.01:2pi
-# end
-
 function draw_circle(window::Window, x::Int, y::Int, r::Int, colour::Tuple{Int, Int, Int, Int})
     SDL_SetRenderDrawColor(window.renderer, colour...)
     SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND)
