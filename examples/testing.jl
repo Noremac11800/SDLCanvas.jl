@@ -4,12 +4,11 @@ using JLGame
 window = create_window("JLGame", 800, 600)
 
 function main()
-    font = get_font("sunnyspells", 50)
-    surf = render_font(font, "This is some text", BLACK)
+    font = Font("sunnyspells", 20)
+    surface = render_font(font, "This is some text", BLACK)
+    cx, cy = get_center(window, surface)
 
-    x = 400
-    speed = 2
-    clock = Clock(120)
+    clock = Clock(60)
     RUNNING = true
     while RUNNING
 
@@ -21,19 +20,10 @@ function main()
             end
         end
 
-        x += speed
-        if x < 200
-            x = 200
-            speed *= -1
-        end
-        if x > 400
-            x = 400
-            speed *= -1
-        end
-
         splash(window, WHITE)
         
-        blit(window, surf, x, 300)
+        draw_circle(window, 400, 300, 100, BLACK)
+        blit(window, surface, 400, 300)
 
         update_display(window)
 

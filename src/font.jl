@@ -1,13 +1,19 @@
-module Font
+module Fonts
 
 include("common.jl")
 
-export get_font
+export Font
 export render_font
-export blit
 
 using ..Colour
 using ..Display
+using ..Surfaces
+
+struct Font
+    font::Ptr{TTF_Font}
+    size::Int
+    Font(fontname, size) = new(get_font(fontname, size), size)
+end
 
 function get_font(fontname::String, size::Int)::Ptr{TTF_Font}
     @assert TTF_Init() == 0 "Error initialising font backend"
@@ -19,17 +25,13 @@ function get_font(fontname::String, size::Int)::Ptr{TTF_Font}
     return font
 end
 
-function render_font(font::Ptr{TTF_Font}, text::String, colour::ColourRGBA)::Ptr{SDL_Surface}
+function render_font(font::Font, text::String, colour::ColourRGBA; antialiased=true)::Surface
     colour = SDL_Color(colour.r, colour.g, colour.b, colour.a)
-    return TTF_RenderText_Solid(font, text, colour)
-end
-
-function blit(window::Window, surface::Ptr{SDL_Surface}, x::Int, y::Int)
-    texture = SDL_CreateTextureFromSurface(window.renderer, surface)
-    w, h = Ref{Int32}(), Ref{Int32}()
-    SDL_QueryTexture(texture, C_NULL, C_NULL, w, h)
-    rect = SDL_Rect(x, y, w[], h[])
-    SDL_RenderCopy(window.renderer, texture, C_NULL, Ref(rect))
+    if antialiased
+        return Surface(TTF_RenderText_Blended(font.font, text, colour))
+    else
+        return Surface(TTF_RenderText_Solid(font.font, text, colour))
+    end
 end
 
 end

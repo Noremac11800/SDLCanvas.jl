@@ -30,6 +30,12 @@ export splash
 export update_display
 include("display.jl")
 
+export Surface
+export get_size
+export get_center
+export blit
+include("surface.jl")
+
 export draw_pixel
 export draw_line
 export draw_arc
@@ -46,9 +52,8 @@ export Clock
 export tick
 include("clock.jl")
 
-export get_font
+export Font
 export render_font
-export blit
 include("font.jl")
 
 export events_exist
@@ -90,10 +95,11 @@ include("events.jl")
 using .Colour
 using .Colours
 using .Display
+using .Surfaces
 using .Draw
 using .Time
 using .Events
-using .Font
+using .Fonts
 
 end
 
