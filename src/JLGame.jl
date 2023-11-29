@@ -46,6 +46,11 @@ export Clock
 export tick
 include("clock.jl")
 
+export get_font
+export render_font
+export blit
+include("font.jl")
+
 export events_exist
 export pop_event
 export is_key_pressed
@@ -88,6 +93,7 @@ using .Display
 using .Draw
 using .Time
 using .Events
+using .Font
 
 end
 

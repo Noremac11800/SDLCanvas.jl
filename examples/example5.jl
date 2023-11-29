@@ -4,15 +4,11 @@ using JLGame
 window = create_window("JLGame", 800, 600)
 
 function main()
-    font = get_font("sunnyspells", 50)
-    surf = render_font(font, "This is some text", BLACK)
-
-    x = 400
-    speed = 2
-    clock = Clock(120)
+    a = 0
+    b = 0
+    clock = Clock(60)
     RUNNING = true
     while RUNNING
-
         while events_exist()
             event = pop_event()
             if event.type == QUIT
@@ -21,19 +17,20 @@ function main()
             end
         end
 
-        x += speed
-        if x < 200
-            x = 200
-            speed *= -1
+        a += 0.05
+        if a > 2pi
+            a = 0
         end
-        if x > 400
-            x = 400
-            speed *= -1
+
+        b += 0.02
+        if b > 2pi
+            b = 0
         end
 
         splash(window, WHITE)
-        
-        blit(window, surf, x, 300)
+
+        draw_ellipse(window, 400, 300, 60, 100, RED; rotation=a)
+        draw_filled_ellipse(window, 600, 300, 60, 100, GREEN; rotation=b)
 
         update_display(window)
 

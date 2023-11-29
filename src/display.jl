@@ -15,7 +15,7 @@ export update_display
 SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 16)
 SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16)
 
-@assert SDL_Init(SDL_INIT_EVERYTHING) == 0 "error initializing SDL: $(unsafe_string(SDL_GetError()))"
+@assert SDL_Init(SDL_INIT_EVERYTHING) == 0 "Error initialising SDL: $(unsafe_string(SDL_GetError()))"
 
 const SCREEN_CENTER_X = SDL_WINDOWPOS_CENTERED
 const SCREEN_CENTER_Y = SDL_WINDOWPOS_CENTERED
