@@ -56,6 +56,11 @@ export Font
 export render_font
 include("font.jl")
 
+export Image
+export load_image
+export blit
+include("images.jl")
+
 export events_exist
 export pop_event
 export is_key_pressed
@@ -100,6 +105,7 @@ using .Draw
 using .Time
 using .Events
 using .Fonts
+using .Images
 
 end
 
