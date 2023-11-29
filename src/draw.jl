@@ -140,6 +140,14 @@ function draw_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, co
     end
 end
 
+function draw_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::Tuple{Int, Int, Int}; kwargs...)
+    draw_ellipse(window, x, y, major, minor, (colour..., 255); kwargs...)
+end
+
+function draw_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::ColourRGBA; kwargs...)
+    draw_ellipse(window, x, y, major, minor, (colour.r, colour.g, colour.b, colour.a); kwargs...)
+end
+
 function draw_filled_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::Tuple{Int, Int, Int, Int}; rotation::Real=0)
     SDL_SetRenderDrawColor(window.renderer, colour...)
     SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND)
@@ -153,6 +161,14 @@ function draw_filled_ellipse(window::Window, x::Int, y::Int, major::Int, minor::
             end
         end
     end
+end
+
+function draw_filled_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::Tuple{Int, Int, Int}; kwargs...)
+    draw_filled_ellipse(window, x, y, major, minor, (colour..., 255); kwargs...)
+end
+
+function draw_filled_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::ColourRGBA; kwargs...)
+    draw_filled_ellipse(window, x, y, major, minor, (colour.r, colour.g, colour.b, colour.a); kwargs...)
 end
 
 function draw_rect(window::Window, x::Int, y::Int, w::Int, h::Int, colour::Tuple{Int, Int, Int, Int})

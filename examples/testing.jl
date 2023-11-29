@@ -31,8 +31,8 @@ function main()
 
         splash(window, WHITE)
 
-        draw_ellipse(window, 400, 300, 60, 100, (255, 0, 0, 255); rotation=a)
-        draw_filled_ellipse(window, 600, 300, 60, 100, (0, 255, 0, 255); rotation=b)
+        draw_ellipse(window, 400, 300, 60, 100, RED; rotation=a)
+        draw_filled_ellipse(window, 600, 300, 60, 100, GREEN; rotation=b)
 
         update_display(window)
 
