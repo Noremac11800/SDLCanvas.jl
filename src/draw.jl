@@ -13,6 +13,8 @@ export draw_arc
 export draw_filled_arc
 export draw_circle
 export draw_filled_circle
+export draw_ellipse
+export draw_filled_ellipse
 export draw_rect
 export draw_filled_rect
 
@@ -71,7 +73,7 @@ function draw_filled_arc(window::Window, x::Int, y::Int, r::Int, start_angle::Re
     SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND)
     for dx in -r:r
         for dy in -r:r
-            if (dx^2 + dy^2 <= r^2)
+            if dx^2 + dy^2 <= r^2
                 angle_to_x_axis = atan(-dy, dx)
                 angle_to_x_axis = angle_to_x_axis < 0 ? angle_to_x_axis + 2pi : angle_to_x_axis
                 if start_angle <= angle_to_x_axis <= end_angle
@@ -89,6 +91,10 @@ end
 function draw_filled_arc(window::Window, x::Int, y::Int, r::Int, start_angle::Real, end_angle::Real, colour::ColourRGBA)
     draw_filled_arc(window, x, y, r, start_angle, end_angle, (colour.r, colour.g, colour.b, colour.a))
 end
+
+# function draw_eliptic_arc(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::ColourRGBA)
+#     for theta in 0:0.01:2pi
+# end
 
 function draw_circle(window::Window, x::Int, y::Int, r::Int, colour::Tuple{Int, Int, Int, Int})
     SDL_SetRenderDrawColor(window.renderer, colour...)
@@ -122,6 +128,31 @@ end
 
 function draw_filled_circle(window::Window, x::Int, y::Int, r::Int, colour::ColourRGBA)
     draw_filled_circle(window, x, y, r, (colour.r, colour.g, colour.b, colour.a))
+end
+
+function draw_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::Tuple{Int, Int, Int, Int}; rotation::Real=0)
+    SDL_SetRenderDrawColor(window.renderer, colour...)
+    SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND)
+    for theta in 0:0.01:2pi
+        px = major*cos(theta)*cos(rotation) - minor*sin(theta)*sin(rotation) + x
+        py = major*cos(theta)*sin(rotation) + minor*sin(theta)*cos(rotation) + y
+        SDL_RenderDrawPoint(window.renderer, round(Int, px), round(Int, py))
+    end
+end
+
+function draw_filled_ellipse(window::Window, x::Int, y::Int, major::Int, minor::Int, colour::Tuple{Int, Int, Int, Int}; rotation::Real=0)
+    SDL_SetRenderDrawColor(window.renderer, colour...)
+    SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND)
+    r = max(major, minor)
+    for dx in -r:r
+        for dy in -r:r
+            ddx = dx*cos(rotation) + dy*sin(rotation)
+            ddy = dy*cos(rotation) - dx*sin(rotation)
+            if (ddx/major)^2 + (ddy/minor)^2 <= 1
+                SDL_RenderDrawPoint(window.renderer, round(Int, x + dx), round(Int, y + dy))
+            end
+        end
+    end
 end
 
 function draw_rect(window::Window, x::Int, y::Int, w::Int, h::Int, colour::Tuple{Int, Int, Int, Int})

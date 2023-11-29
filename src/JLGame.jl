@@ -36,6 +36,8 @@ export draw_arc
 export draw_filled_arc
 export draw_circle
 export draw_filled_circle
+export draw_ellipse
+export draw_filled_ellipse
 export draw_rect
 export draw_filled_rect
 include("draw.jl")

@@ -3,9 +3,9 @@ using JLGame
 
 window = create_window("JLGame", 800, 600)
 
-circles = []
-
 function main()
+    a = 0
+    b = 0
     clock = Clock(60)
     RUNNING = true
     while RUNNING
@@ -17,15 +17,22 @@ function main()
                 RUNNING = false
                 break
             end
-
-            if is_key_pressed(event, K_SPACE)
-                push!(circles, (rand(1:800), rand(1:600)))
-            end
         end
 
-        for (x, y) in circles
-            draw_filled_circle(window, x, y, 20, WHITE)
+        a += 0.05
+        if a > 2pi
+            a = 0
         end
+
+        b += 0.02
+        if b > 2pi
+            b = 0
+        end
+
+        splash(window, WHITE)
+
+        draw_ellipse(window, 400, 300, 60, 100, (255, 0, 0, 255); rotation=a)
+        draw_filled_ellipse(window, 600, 300, 60, 100, (0, 255, 0, 255); rotation=b)
 
         update_display(window)
 
