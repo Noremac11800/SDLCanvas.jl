@@ -42,19 +42,17 @@ end
 
 function pressed(button::Button, event::SDL_Event)::Bool
     mx, my = get_mouse_pos()
-    x, y, w, h = button.x, button.y, button.w, button.h
-    p = button.padding
-    if x-p < mx < x+w-p && y-p < my < y+h-p
+    if is_contained(button, mx, my)
         button.hovered = true
     else
         button.hovered = false
     end
     if is_mouse_held()
-        if x-p < mx < x+w-p && y-p < my < y+h-p
+        if is_contained(button, mx, my) && is_contained(button, get_last_mouse_clicked_pos()...)
             button.pressed = true
         end
     else
-        if x-p < mx < x+w-p && y-p < my < y+h-p && button.pressed
+        if is_contained(button, mx, my) && button.pressed && is_contained(button, get_last_mouse_clicked_pos()...)
             button.on_clicked(button)
         end
         button.pressed = false
@@ -100,6 +98,12 @@ function draw(window::Window, button::Button)
     end
     draw_rect(window, button.x-button.padding, button.y-button.padding, button.w, button.h, button.border_colour)
     blit(window, text_surface, button.x, button.y)
+end
+
+function is_contained(button::Button, px::Int, py::Int)
+    x, y, w, h = button.x, button.y, button.w, button.h
+    p = button.padding
+    return x-p < px < x+w-p && y-p < py < y+h-p 
 end
 
 end

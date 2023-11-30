@@ -20,6 +20,7 @@ struct GUI_Manager
 end
 
 function process_events(manager::GUI_Manager, event::SDL_Event)
+    mouse_clicked(event)
     for element in manager.elements
         sigs = element._signals
         for (sig_name, sig) in pairs(sigs)
