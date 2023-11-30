@@ -67,7 +67,7 @@ signals = Dict(
 function Button(label::String, x::Int, y::Int;
                 w::Int = 0,
                 h::Int = 0,
-                on_clicked::Function = () => (),
+                on_clicked::Function = (button::Button) -> (),
                 colour::ColourRGBA = WHITE,
                 hover_colour::ColourRGBA = LIGHTGREY,
                 pressed_colour::ColourRGBA = DARKGREY,
@@ -88,6 +88,9 @@ function draw(window::Window, button::Button)
     text_surface = render_font(button.font, button.label, BLACK)
     if button.w == 0 || button.h == 0
         button.w, button.h = get_size(window, text_surface) .+ (button.padding*2, button.padding*2)
+    end
+    if button.label == ""
+        button.padding = 0
     end
     if button.pressed
         draw_filled_rect(window,  button.x-button.padding, button.y-button.padding, button.w, button.h, button.pressed_colour)
