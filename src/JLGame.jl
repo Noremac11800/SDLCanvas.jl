@@ -68,12 +68,9 @@ export events_exist
 export pop_event
 export get_mouse_pos
 export mouse_clicked
-export get_last_mouse_clicked_pos
-export set_last_mouse_clicked_pos
 export is_mouse_held
 export is_key_pressed
 export is_key_held
-export MOUSE_LAST_CLICKED_POS
 export QUIT
 export MOUSE_LEFT
 export MOUSE_RIGHT
@@ -120,6 +117,7 @@ using .Images
 
 ###########################################################
 
+export GLOBALS
 export GUI_Manager
 export AbstractGUIElement
 export process_events

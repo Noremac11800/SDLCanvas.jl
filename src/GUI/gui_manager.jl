@@ -2,6 +2,7 @@ module GUI
 
 include("../common.jl")
 
+export GLOBALS
 export GUI_Manager
 export AbstractGUIElement
 export process_events
@@ -13,6 +14,13 @@ using ..Events
 
 abstract type AbstractGUIElement end
 
+mutable struct Globals
+    mouse_last_clicked_position::Tuple{Int, Int}
+    Globals() = new((0, 0))
+end
+
+global const GLOBALS = Ref{Globals}(Globals())
+
 struct GUI_Manager
     window::Window
     elements::Vector{AbstractGUIElement}
@@ -20,7 +28,10 @@ struct GUI_Manager
 end
 
 function process_events(manager::GUI_Manager, event::SDL_Event)
-    mouse_clicked(event)
+    if mouse_clicked(event)
+        GLOBALS[].mouse_last_clicked_position = get_mouse_pos()
+    end
+
     for element in manager.elements
         sigs = element._signals
         for (sig_name, sig) in pairs(sigs)

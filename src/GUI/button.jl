@@ -48,11 +48,11 @@ function pressed(button::Button, event::SDL_Event)::Bool
         button.hovered = false
     end
     if is_mouse_held()
-        if is_contained(button, mx, my) && is_contained(button, get_last_mouse_clicked_pos()...)
+        if is_contained(button, mx, my) && is_contained(button, GLOBALS[].mouse_last_clicked_position...)
             button.pressed = true
         end
     else
-        if is_contained(button, mx, my) && button.pressed && is_contained(button, get_last_mouse_clicked_pos()...)
+        if is_contained(button, mx, my) && button.pressed && is_contained(button, GLOBALS[].mouse_last_clicked_position...)
             button.on_clicked(button)
         end
         button.pressed = false

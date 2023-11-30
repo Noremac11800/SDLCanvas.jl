@@ -6,12 +6,9 @@ export events_exist
 export pop_event
 export get_mouse_pos
 export mouse_clicked
-export get_last_mouse_clicked_pos
-export set_last_mouse_clicked_pos
 export is_mouse_held
 export is_key_pressed
 export is_key_held
-export MOUSE_LAST_CLICKED_POS
 export QUIT
 export MOUSE_LEFT
 export MOUSE_RIGHT
@@ -84,15 +81,15 @@ K_X = SDL_SCANCODE_X
 K_Y = SDL_SCANCODE_Y
 K_Z = SDL_SCANCODE_Z
 
-global const MOUSE_LAST_CLICKED_POS = Ref{Tuple{Int, Int}}((0, 0))
+# global const MOUSE_LAST_CLICKED_POS = Ref{Tuple{Int, Int}}((0, 0))
 
-function get_last_mouse_clicked_pos()
-    return MOUSE_LAST_CLICKED_POS[]
-end
+# function get_last_mouse_clicked_pos()
+#     return MOUSE_LAST_CLICKED_POS[]
+# end
 
-function set_last_mouse_clicked_pos(pos)
-    global MOUSE_LAST_CLICKED_POS[] = pos
-end
+# function set_last_mouse_clicked_pos(pos)
+#     global MOUSE_LAST_CLICKED_POS[] = pos
+# end
 
 function get_mouse_pos()::Tuple{Int, Int}
     x, y = Ref{Int32}(), Ref{Int32}()
@@ -102,7 +99,6 @@ end
 
 function mouse_clicked(event::SDL_Event, mouse_button::Int=MOUSE_LEFT)::Bool
     if event.type == SDL_MOUSEBUTTONDOWN
-        set_last_mouse_clicked_pos(get_mouse_pos())
         return event.button.button == mouse_button
     end
     return false
