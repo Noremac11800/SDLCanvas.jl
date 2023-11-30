@@ -81,16 +81,6 @@ K_X = SDL_SCANCODE_X
 K_Y = SDL_SCANCODE_Y
 K_Z = SDL_SCANCODE_Z
 
-# global const MOUSE_LAST_CLICKED_POS = Ref{Tuple{Int, Int}}((0, 0))
-
-# function get_last_mouse_clicked_pos()
-#     return MOUSE_LAST_CLICKED_POS[]
-# end
-
-# function set_last_mouse_clicked_pos(pos)
-#     global MOUSE_LAST_CLICKED_POS[] = pos
-# end
-
 function get_mouse_pos()::Tuple{Int, Int}
     x, y = Ref{Int32}(), Ref{Int32}()
     SDL_GetMouseState(x, y)
