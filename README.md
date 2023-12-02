@@ -16,7 +16,9 @@ The "examples/" directory in the root of the repo has a series of strangely orga
 
 Using Julia's package manager, JLGame and its dependencies can be installed via:
 
-```using Pkg; Pkg.add("JLGame")```
+```
+using Pkg; Pkg.add("JLGame")
+```
 
 , or alternatively in the Julia REPL:
 
