@@ -20,7 +20,7 @@ Using Julia's package manager, JLGame and its dependencies can be installed via:
 
 , or alternatively in the Julia REPL:
 
-```Julia
+```
 julia> ]
 pkg> add JLGame
 ```
