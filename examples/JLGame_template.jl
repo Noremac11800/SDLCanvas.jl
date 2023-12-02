@@ -1,4 +1,3 @@
-using Pkg; Pkg.activate(".")
 using JLGame
 
 window = create_window("JLGame", 800, 600)

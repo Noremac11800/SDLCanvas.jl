@@ -4,7 +4,7 @@ using JLGame
 window = create_window("JLGame", 800, 600)
 
 function main()
-    font = Font("/Users/cam/Documents/GitBucket/JLGame/assets/sunnyspells.ttf", 20)
+    font = Font("./assets/sunnyspells.ttf", 20)
     surface = render_font(font, "This is some text", BLACK)
 
     clock = Clock(60)
@@ -21,7 +21,7 @@ function main()
         splash(window, WHITE)
         
         draw_circle(window, 400, 300, 100, BLACK)
-        blit(window, surface, 400, 300)
+        blit(window, surface, 400, 300; centered=true)  # Draw the surface relative to its center
 
         update_display(window)
 

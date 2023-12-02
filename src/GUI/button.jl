@@ -76,7 +76,7 @@ function Button(label::String, x::Int, y::Int;
                 visible::Bool = true,
                 active::Bool = true,
                 font_size::Int = 20,
-                font::Font = Font("/Users/cam/Documents/GitBucket/JLGame/assets/sunnyspells.ttf", font_size),
+                font::Font = Font("./assets/sunnyspells.ttf", font_size),
                 padding::Int=10,
                 pressed::Bool=false,
                 hovered::Bool=false)

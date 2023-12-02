@@ -4,7 +4,7 @@ using JLGame
 window = create_window("JLGame", 800, 600)
 
 function main()
-    image = load_image("/Users/cam/Documents/GitBucket/JLGame/assets/ship.png")
+    image = load_image("./assets/ship.png")
 
     clock = Clock(60)
     RUNNING = true

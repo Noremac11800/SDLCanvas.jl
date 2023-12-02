@@ -3,7 +3,7 @@ using JLGame
 
 window = create_window("JLGame", 800, 600)
 
-global shape_func = draw_circle
+shape_func = draw_circle
 
 shapes = []
 

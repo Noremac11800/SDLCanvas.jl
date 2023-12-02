@@ -1,7 +1,7 @@
 name = "JLGame"
 uuid = "736c1586-5226-4b2e-9818-fad6972f0408"
 authors = ["Cameron Kirk"]
-version = "1.0.0-DEV"
+version = "1.12.6"
 
 [deps]
 SimpleDirectMediaLayer = "98e33af6-2ee5-5afd-9e75-cbc738b767c4"
