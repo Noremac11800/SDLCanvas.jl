@@ -1,4 +1,4 @@
-using Pkg; Pkg.activate(".")
+using Pkg; Pkg.activate(dirname(@__DIR__))
 using JLGame
 
 window = create_window("JLGame", 800, 600)
@@ -7,6 +7,8 @@ circles1 = []
 circles2 = []
 
 function main()
+    gui_manager = GUI_Manager(window; show_fps = true)
+
     clock = Clock(60)
     RUNNING = true
     while RUNNING
@@ -32,6 +34,8 @@ function main()
         for (x, y) in circles2
             draw_filled_circle(window, x, y, 20, GREEN)
         end
+
+        draw(gui_manager)
 
         update_display(window)
 

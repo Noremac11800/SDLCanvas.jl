@@ -1,4 +1,4 @@
-using Pkg; Pkg.activate(".")
+using Pkg; Pkg.activate(dirname(@__DIR__))
 using JLGame
 
 window = create_window("JLGame", 800, 600)

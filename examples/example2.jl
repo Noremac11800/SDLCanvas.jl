@@ -1,4 +1,4 @@
-using Pkg; Pkg.activate(".")
+using Pkg; Pkg.activate(dirname(@__DIR__))
 using JLGame
 
 STARS = [(rand(0:800), rand(0:600)) for _ in 1:300];

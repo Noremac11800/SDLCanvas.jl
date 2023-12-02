@@ -1,10 +1,10 @@
-using Pkg; Pkg.activate(".")
+using Pkg; Pkg.activate(dirname(@__DIR__))
 using JLGame
 
 window = create_window("JLGame", 800, 600)
 
 function main()
-    image = load_image("./assets/ship.png")
+    image = load_image(joinpath(dirname(@__DIR__), "assets", "ship.png"))
 
     clock = Clock(60)
     RUNNING = true

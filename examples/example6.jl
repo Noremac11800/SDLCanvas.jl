@@ -1,10 +1,10 @@
-using Pkg; Pkg.activate(".")
+using Pkg; Pkg.activate(dirname(@__DIR__))
 using JLGame
 
 window = create_window("JLGame", 800, 600)
 
 function main()
-    font = Font("./assets/sunnyspells.ttf", 20)
+    font = Font(joinpath(dirname(@__DIR__), "assets", "sunnyspells.ttf"), 20)
     surface = render_font(font, "This is some text", BLACK)
 
     clock = Clock(60)

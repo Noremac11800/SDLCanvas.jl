@@ -1,4 +1,4 @@
-using Pkg; Pkg.activate(".")
+using Pkg; Pkg.activate(dirname(@__DIR__))
 using JLGame
 using SimpleDirectMediaLayer
 using SimpleDirectMediaLayer.LibSDL2
