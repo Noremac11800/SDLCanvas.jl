@@ -27,7 +27,7 @@ pkg> add JLGame'''
 
 The "examples/" directory in the repo contains a `JLGame_template.jl` which is a bare-bones program designed to display an empty black window. However for convenience, the template code is below:
 
-'''Julia
+```Julia
 using JLGame
 
 window = create_window("JLGame", 800, 600)
@@ -55,7 +55,7 @@ function main()
 end
 
 main()
-'''
+```
 
 ## Examples
 
