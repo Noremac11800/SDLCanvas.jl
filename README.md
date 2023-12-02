@@ -63,6 +63,34 @@ main()
 
 ## Examples
 
-## Trouble Shooting
+### examples/example1.jl
+Drawing animated circles
 
-## Contributing
+### examples/example2.jl
+Animated scrolling starfield
+
+### examples/example3.jl
+Spinning loading circle
+
+### examples/example4.jl
+WASD-player-controlled square
+
+### examples/example5.jl
+Animated, rotating ellipses
+
+### examples/example6.jl
+Displaying text centered relative to the surface's center
+
+### examples/example7.jl
+Displaying a PNG
+
+### examples/example8.jl
+Drawing circles according to mouse position and button clicked.
+Left click = Draw single filled red circle
+Hold right click = Draw filled green circle every frame
+
+### examples/example9.jl
+GUI manager and button demo
+
+### examples/example10.jl
+Very simple shape-painting app demo
