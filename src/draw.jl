@@ -2,7 +2,7 @@ module Draw
 
 include("common.jl")
 
-# Colour and Display modules are already brought into scope in JLGame.jl.
+# Colour and Display modules are already brought into scope in SDLCanvas.jl.
 # Re-including them with include() is unnecessary. Just use the .. using syntax.
 using ..Colour
 using ..Display

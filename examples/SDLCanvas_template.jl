@@ -1,6 +1,6 @@
-using JLGame
+using SDLCanvas
 
-window = create_window("JLGame", 800, 600)
+window = create_window("SDLCanvas", 800, 600)
 
 function main()
     clock = Clock(60)

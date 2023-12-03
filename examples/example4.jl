@@ -1,9 +1,9 @@
 using Pkg; Pkg.activate(dirname(@__DIR__))
-using JLGame
+using SDLCanvas
 using SimpleDirectMediaLayer
 using SimpleDirectMediaLayer.LibSDL2
 
-window = create_window("JLGame", 800, 600)
+window = create_window("SDLCanvas", 800, 600)
 
 function handle_events(x, y, speed)
     if is_key_held(K_W)

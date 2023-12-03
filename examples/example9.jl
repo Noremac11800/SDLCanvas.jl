@@ -1,7 +1,7 @@
 using Pkg; Pkg.activate(dirname(@__DIR__))
-using JLGame
+using SDLCanvas
 
-window = create_window("JLGame", 800, 600)
+window = create_window("SDLCanvas", 800, 600)
 bg_colour = WHITE
 
 function change_bg_colour(button::Button)

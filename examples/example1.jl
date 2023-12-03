@@ -1,5 +1,5 @@
 using Pkg; Pkg.activate(dirname(@__DIR__))
-using JLGame
+using SDLCanvas
 
 function draw_ring(window::Window; n_circles=100, ring_radius = 200, circle_radius=10)
     cx = window.w / 2
@@ -12,7 +12,7 @@ function draw_ring(window::Window; n_circles=100, ring_radius = 200, circle_radi
     end
 end
 
-window = create_window("JLGame", 800, 600)
+window = create_window("SDLCanvas", 800, 600)
 
 function main()
     r = 200

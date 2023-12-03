@@ -1,6 +1,6 @@
-using JLGame
+using SDLCanvas
 using Test
 
-@testset "JLGame.jl" begin
+@testset "SDLCanvas.jl" begin
     @assert 1 < 2
 end

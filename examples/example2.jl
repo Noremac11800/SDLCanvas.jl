@@ -1,9 +1,9 @@
 using Pkg; Pkg.activate(dirname(@__DIR__))
-using JLGame
+using SDLCanvas
 
 STARS = [(rand(0:800), rand(0:600)) for _ in 1:300];
 
-window = create_window("JLGame", 800, 600)
+window = create_window("SDLCanvas", 800, 600)
 
 function draw_starfield()
     for (i, (x, y)) in enumerate(STARS)

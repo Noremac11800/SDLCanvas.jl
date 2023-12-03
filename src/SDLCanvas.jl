@@ -1,4 +1,4 @@
-module JLGame
+module SDLCanvas
 
 include("common.jl")
 

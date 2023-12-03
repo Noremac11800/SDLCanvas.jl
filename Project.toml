@@ -1,4 +1,4 @@
-name = "JLGame"
+name = "SDLCanvas"
 uuid = "736c1586-5226-4b2e-9818-fad6972f0408"
 authors = ["Cameron Kirk"]
 version = "1.12.6"
