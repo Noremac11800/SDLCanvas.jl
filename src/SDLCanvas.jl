@@ -78,6 +78,7 @@ export K_ESCAPE
 export K_SPACE
 export K_ENTER
 export K_RETURN
+export K_BACKSPACE
 export K_A
 export K_B
 export K_C
@@ -125,12 +126,19 @@ export add_element
 export draw
 include("GUI/gui_manager.jl")
 
+export MouseRegion
+export RectRegion
+export CircleRegion
+export is_contained
+include("GUI/utils/utils.jl")
+
 export Button
 export signals
 export draw
 include("GUI/button.jl")
 
 using .GUI
+using .Utils
 using .Buttons
 
 end

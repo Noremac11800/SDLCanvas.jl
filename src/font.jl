@@ -17,7 +17,6 @@ end
 
 function get_font(path::String, size::Int)::Ptr{TTF_Font}
     @assert TTF_Init() == 0 "Error initialising font backend"
-    # path = joinpath("..", pwd(), "assets", fontname*".ttf")
     font::Ptr{TTF_Font} = TTF_OpenFont(path, size)
     if font == C_NULL
         throw(error("font was null and couldn't be found at: $(path)"))
