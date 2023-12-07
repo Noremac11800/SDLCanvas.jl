@@ -1,4 +1,3 @@
-using Pkg; Pkg.activate(dirname(@__DIR__))
 using SDLCanvas
 
 function draw_ring(window::Window; n_circles=100, ring_radius = 200, circle_radius=10)

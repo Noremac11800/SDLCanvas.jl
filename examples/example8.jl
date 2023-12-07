@@ -1,4 +1,3 @@
-using Pkg; Pkg.activate(dirname(@__DIR__))
 using SDLCanvas
 
 window = create_window("SDLCanvas", 800, 600)

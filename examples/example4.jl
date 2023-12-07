@@ -1,7 +1,4 @@
-using Pkg; Pkg.activate(dirname(@__DIR__))
 using SDLCanvas
-using SimpleDirectMediaLayer
-using SimpleDirectMediaLayer.LibSDL2
 
 window = create_window("SDLCanvas", 800, 600)
 

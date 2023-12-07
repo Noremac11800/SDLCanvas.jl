@@ -1,4 +1,3 @@
-using Pkg; Pkg.activate(dirname(@__DIR__))
 using SDLCanvas
 
 STARS = [(rand(0:800), rand(0:600)) for _ in 1:300];
