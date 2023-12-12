@@ -4,11 +4,13 @@ authors = ["Cameron Kirk"]
 version = "0.1.1"
 
 [deps]
+JpegTurbo_jll = "aacddb02-875f-59d6-b918-886e6ef4fbf8"
 SimpleDirectMediaLayer = "98e33af6-2ee5-5afd-9e75-cbc738b767c4"
 
 [compat]
-julia = "1"
+JpegTurbo_jll = "3.0"
 SimpleDirectMediaLayer = "0.3, 0.4"
+julia = "1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

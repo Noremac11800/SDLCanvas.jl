@@ -118,6 +118,11 @@ using .Images
 
 ###########################################################
 
+export create_template
+include("utils/init_SDLCanvas_template.jl")
+
+using .InitSDLCanvasTemplate
+
 export GLOBALS
 export GUI_Manager
 export AbstractGUIElement
